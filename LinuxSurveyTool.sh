@@ -150,11 +150,81 @@ function passwd {
 		pause "Press Enter to Return to Menu"
 }
 
-function passwd {
+function shadow {
 	local DorRValue = displayOrRead ()
 	if [ DorRValue = 'write']; then
-		cp /etc/passwd $FUNCNAME.txt
+		cp /etc/shadow $FUNCNAME.txt
 	else
-		cat /etc/passwd
+		cat /etc/shadow
 		pause "Press Enter to Return to Menu"
 }
+
+function meminfo {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		cp /proc/meminfo $FUNCNAME.txt
+	else
+		cat /proc/meminfo
+		pause "Press Enter to Return to Menu"
+}
+
+function cpuinfo {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		cp /proc/cpuinfo $FUNCNAME.txt
+	else
+		cat /proc/cpuinfo
+		pause "Press Enter to Return to Menu"
+}
+
+function mount {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write' ]; then
+		mount -l > $FUNCNAME.txt
+	else
+		mount -l
+		pause "Press Enter to Return to Menu"
+}
+
+function arp {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write' ]; then
+		arp -a -v > $FUNCNAME.txt
+	else
+		arp -a -v
+		pause "Press Enter to Return to Menu"
+}
+
+function groupInfo {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write' ]; then
+		cp /etc/group $FUNCNAME.txt
+	else
+		cat /etc/group
+		pause "Press Enter to Return to Menu"
+}
+
+function lastDay {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		sudo find -L / -mtime -1 -ctime -1 -atime -1  > $FUNCNAME.txt
+	else
+		sudo find -L / -mtime -1 -ctime -1 -atime -1
+		pause "Press Enter to Return to Menu"
+}
+
+function lastDay {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		sudo find -L / -mtime -1 -ctime -1 -atime -1  > $FUNCNAME.txt
+	else
+		sudo find -L / -mtime -1 -ctime -1 -atime -1
+		pause "Press Enter to Return to Menu"
+}
+function groupInfo {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		cp /etc/group $FUNCNAME.txt
+	else
+		cat /etc/group
+	
