@@ -30,6 +30,7 @@ function menu {
 	echo "************************"
 	echo -n "Enter your menu choice [a-0]: "
 	read userChoice
+	if [ userChoice -eg
 	return userChoice
 }
 
@@ -293,4 +294,6 @@ function du {
 		du -a
 }
 
+###########Main############
+clear
 	
