@@ -227,4 +227,70 @@ function groupInfo {
 		cp /etc/group $FUNCNAME.txt
 	else
 		cat /etc/group
+}
+
+#Fair Warning Don't Know if this works write
+function sudoers {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		grep :`grep root /etc/group | cut -d: -f3`: /etc/passwd > $FUNCNAME.txt
+	else
+		grep :`grep root /etc/group | cut -d: -f3`: /etc/passwd
+}
+
+function dateTime {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		date > $FUNCNAME.txt
+		time >> $FUNCNAME.txt
+	else
+		date
+		time
+}
+
+
+function systemInfo {
+	local DorRValue = displayOrRead ()
+	local FILES=/proc/*
+	if [ DorRValue = 'write']; then
+		touch $FUNCNAME.txt
+		for f in $FILES
+			do
+				echo "" >> $FUNCNAME.txt
+				echo "--------------------" $f "-----------------------" >> $FUNCNAME.txt
+				cat $f >> $FUNCNAME.txt
+			done
+	else
+		for f in $FILES
+			do
+				echo ""
+				echo "--------------------" $f "-----------------------"
+				cat $f
+			done
+}
+
+function uname {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		uname -a > $FUNCNAME.txt
+	else
+		uname -a
+}
+
+function df {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		df -a > $FUNCNAME.txt
+	else
+		df -a
+}
+
+function du {
+	local DorRValue = displayOrRead ()
+	if [ DorRValue = 'write']; then
+		du -a > $FUNCNAME.txt
+	else
+		du -a
+}
+
 	
