@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#might need to use global values intead of returns, we shall see...
+
 function menu {
 	clear
 	echo "************************"
@@ -30,8 +32,10 @@ function menu {
 	echo "************************"
 	echo -n "Enter your menu choice [a-0]: "
 	read userChoice
-	if [ userChoice -eg
-	return userChoice
+	if [ $userChoice -ge 0 -a $usershoice -le 18 -o "$userchoice" = "exit" -o  "$userchoice" = "FM"]; then
+		return userChoice
+	else
+		menu()
 }
 
 function pause(){
@@ -234,9 +238,9 @@ function groupInfo {
 function sudoers {
 	local DorRValue = displayOrRead ()
 	if [ DorRValue = 'write']; then
-		grep :`grep root /etc/group | cut -d: -f3`: /etc/passwd > $FUNCNAME.txt
+		cp /etc/sudoers > $FUNCNAME.txt
 	else
-		grep :`grep root /etc/group | cut -d: -f3`: /etc/passwd
+		cat /etc/sudoers
 }
 
 function dateTime {
@@ -295,5 +299,33 @@ function du {
 }
 
 ###########Main############
+writeFlag=0
 clear
+choice=$(menu())
+
+case $choice in
+FM) ;;
+0)  ;;
+1)  ;;
+2)  ;;
+3)  ;;
+4)  ;;
+5)  ;;
+6)  ;;
+7)  ;;
+8)  ;;
+9)  ;;
+10)  ;;
+11)  ;;
+12)  ;;
+13)  ;;
+14)  ;;
+15)  ;;
+16)  ;;
+17)  ;;
+18)  ;;
+exit) exit 0;;
+*) echo "You got by one round of data validation, are you a bad person?";
+echo "Press Enter to continue. . ." ; choice=$(menu()) ; read ;;
+
 	
