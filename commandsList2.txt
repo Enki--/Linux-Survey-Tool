@@ -1,0 +1,23 @@
+ps -A -F -c --forest -H > ps.txt:Process List 
+netstat -v -W -n -e -p -a > netstat.txt:Network Statistics
+last -d -i -F -x -a > last.txt:Last Logged In Info
+id > id.txt:User ID
+ifconfig -a -v > ifconfig.txt:Ifconfig
+route -v -n -ee > route.txt:Route
+pwd > pwd.txt:PWD
+uptime > uptime.txt:Computer Uptime
+cat /etc/passwd > passwd.txt:Passwd
+cat /etc/shadow > shadow.txt:Shadow
+cat /proc/meminfo > meminfo.txt:Memory Informatoin
+cat /proc/cpuinfo > cpuinfo.txt:Cpu Information
+mount -l > mount.txt:Mount Information
+arp -a -v > arp.txt:Arp Table
+cat /etc/group > group.txt:Group Information
+find -L / -mtime -1 -ctime -1 -atime -1  > lastDay.txt:File System changes in the last day
+cat /etc/sudoers > sudoers.txt:Sudoers
+date > date.txt:date
+time > time.txt:time
+uname -a > uname.txt:Uname Information
+df -a > df.txt:FileSystem Disk Usage
+du -a > du.txt:Dir Disk Usager
+time > time.txt:bullshit!

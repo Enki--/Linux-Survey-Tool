@@ -1,0 +1,51 @@
+#!/bin/bash
+
+function pause() {
+	read -p "$*"
+}
+
+function setUpEv() {
+	mkdir surveyTemp
+	cd surveyTemp
+}
+
+function clearnUp() {
+	cd ..
+	tar -cvf survey.tar /surveyTemp
+	rm -rf surveyTemp
+}
+
+function create() {
+	local index1=0
+	listStructure=0
+	while read line
+	do
+		listStructure[$index1]=$line
+		index=$(($index1+1))
+	done <  commandsList.txt
+	return 0
+}
+
+function table() {
+	index=0
+	echo "*********************************"
+	echo "*      Linux Survey Tool        *"
+	echo "*********************************"
+	for command in "${listStructure[@]}"
+	do
+		echo -n "   [$index]  "
+		echo $command | awk -F':' '{print $2}'
+		index=$(($index+1))
+	done
+}
+
+create
+clear
+while :
+do
+	table
+	read userChoice
+	if [ $userChoice -ge 0 -a $usersChoice -le "$index" -o "$userChoice" = "exit" -o  "$userChoice" = "FM"]; then
+		echo $listStructure[$userChoice] | awk -F':' '{print $1}'
+	fi
+done
